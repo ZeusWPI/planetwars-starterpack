@@ -30,6 +30,11 @@ You are running a client that does all the complex networking for you.
 It will start up your bot and run the matches you start in your browser.
 
 You can change the command that runs the bot to your own command by editing the `config.toml` file.
+
+## Writing your own bot
+
+Right now the `simple.py` script contains a very minimalistic bot as example. It's now your task come up with ideas to make the bot win over you opponent and convert this into code. 
+
 ## FAQ
 
 > How do I play against other people?
