@@ -1,4 +1,4 @@
-# planetwars-starterpack
+# Planetwars starterpack
 
 The entrypoint to create your own bot for our AI planetwars game.
 
