@@ -1,0 +1,2 @@
+server = "ws://localhost:8080"
+bot_argv = ["python3", "simple.py"]
