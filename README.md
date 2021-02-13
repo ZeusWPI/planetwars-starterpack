@@ -6,14 +6,34 @@ The entrypoint to create your own bot for our AI planetwars game.
 
 Get immediatly started with just a few steps.
 
+### Required tools
+
+- curl
+- git
+- gcc (or any other C compiler of your choice)
+
+### Installing rust
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+It asks for what version to install. The default is good, so just press enter.
+
+Activate rust in your current shell
+
+```
+source $HOME/.cargo/env
+```
+
+### Setting up the starterpack
 Open a terminal where you want to place your code. Now run
 ```
 git clone https://github.com/ZeusWPI/planetwars-starterpack.git
-cd planetwars-starterpack
+cd planetwars-starterpack/client
 cargo run
 ```
 
-Now browse to [pw.zeus.gent](https://pw.zeus.gent). 
+Now browse to [pw3.zeus.gent](https://pw3.zeus.gent). 
 
 1. Click `Create a lobby`
 2. Enter a username of your choice
