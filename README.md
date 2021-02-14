@@ -30,7 +30,9 @@ Open a terminal where you want to place your code. Now run
 ```
 git clone https://github.com/ZeusWPI/planetwars-starterpack.git
 cd planetwars-starterpack/client
-cargo run
+cargo build
+cd ..
+./client/target/debug/planetwars-client
 ```
 
 Now browse to [pw3.zeus.gent](https://pw3.zeus.gent). 
