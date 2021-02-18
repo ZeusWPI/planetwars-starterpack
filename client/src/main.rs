@@ -18,6 +18,7 @@ const TOKEN_FILE: &'static str = "token";
 #[derive(Serialize, Deserialize)]
 struct Config {
     server: String,
+    frontend: String,
     bot_argv: Vec<String>,
 }
 
@@ -32,7 +33,7 @@ async fn main() {
         }
     };
 
-    let token = match get_token() {
+    let token = match get_token(config.frontend) {
         Ok(token) => token,
         Err(err) => {
             eprintln!("error fetching token:");
@@ -58,7 +59,7 @@ fn read_config() -> Result<Config, io::Error> {
     return Ok(config);
 }
 
-fn get_token() -> Result<Token, io::Error> {
+fn get_token(frontend: String) -> Result<Token, io::Error> {
     let token_file_path = Path::new(TOKEN_FILE);
     if token_file_path.exists() {
         let mut token_file = File::open(token_file_path)?;
@@ -67,11 +68,15 @@ fn get_token() -> Result<Token, io::Error> {
         // todo: return an error here instead of panicking
         let token = Token::from_hex(buf)
             .expect("failed to parse token");
-        println!("using token {} from token file", hex::encode(&token));
+        let str_token = hex::encode(&token);
+        println!("using token {} from token file", str_token);
+        println!("Click to go to the lobby: {}/lobbies/hub?token={}", frontend, str_token);
         return Ok(token);
     } else {
         let token: Token = rand::random();
-        println!("using generated token {}", hex::encode(&token));
+        let str_token = hex::encode(&token);
+        println!("using generated token {}", str_token);
+        println!("Click to go to the lobby: {}/lobbies/hub?token={}", frontend, str_token);
         let mut token_file = File::create(token_file_path)?;
         write!(token_file, "{}", hex::encode(&token))?;
         println!("saved token to token file");

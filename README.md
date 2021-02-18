@@ -15,7 +15,7 @@ Get immediatly started with just a few steps.
 ### Installing rust
 
 ```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlmsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 It asks for what version to install. The default is good, so just press enter.
 
@@ -66,3 +66,7 @@ Simply send them the url of your lobby. They will then have to enter their own u
 > How do I run my own bot and not `simple.py`?
 
 Just edit the `config.toml` file and change the command after `bot-command = ...` into your own command.
+
+> I want to join different lobbies with my bot.
+
+You can use the same token used in the first lobby for other lobbies.
