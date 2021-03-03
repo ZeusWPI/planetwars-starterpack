@@ -1,3 +1,3 @@
 server = "ws://games.zeus.gent:8080"
 frontend = "https://games.zeus.gent"
-bot_argv = ["python", "simple.py"]
+bot_argv = ["python3", "simple.py"]
