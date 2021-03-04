@@ -11,9 +11,10 @@ use std::fs::File;
 use std::path::Path;
 use mozaic_core::Token;
 use mozaic_core::client::simple_client::{ClientParams, simple_client};
+use clap::{App, Arg};
 
-const CONFIG_FILE: &'static str = "config.toml";
-const TOKEN_FILE: &'static str = "token";
+const DEFAULT_CONFIG_FILE: &'static str = "config.toml";
+
 
 #[derive(Serialize, Deserialize)]
 struct Config {
@@ -22,16 +23,16 @@ struct Config {
     bot_argv: Vec<String>,
 }
 
-#[tokio::main]
-async fn main() {
-    let config = match read_config() {
+async fn run(config_path: &str) {
+    let config = match read_config(&config_path) {
         Ok(config) => config,
         Err(err) => {
-            eprintln!("error reading {}:", CONFIG_FILE);
+            eprintln!("error reading {}:", config_path);
             eprintln!("{}", err);
             return;
         }
     };
+
 
     let token = match get_token(config.frontend) {
         Ok(token) => token,
@@ -51,8 +52,34 @@ async fn main() {
     simple_client(params).await;
 }
 
-fn read_config() -> Result<Config, io::Error> {
-    let mut config_file = File::open(CONFIG_FILE)?;
+#[tokio::main]
+async fn main() {
+    let matches = App::new("planetwars-client")
+        .version("0.1")
+        .author("Zeus WPI")
+        .arg(Arg::new("config")
+            .short('c')
+            .long("config")
+            .default_value(DEFAULT_CONFIG_FILE)
+            .takes_value(true))
+        .subcommand(App::new("generate-token"))
+        .get_matches();
+    
+    match matches.subcommand() {
+        Some(("generate-token", _)) => {
+            let token: Token = rand::random();
+            let str_token = hex::encode(&token);
+            println!("{}", str_token);    
+        }
+        _ => {
+            let config_path = matches.value_of("config").unwrap();
+            run(config_path).await;        
+        }
+    }
+}
+
+fn read_config(config_path: &str) -> Result<Config, io::Error> {
+    let mut config_file = File::open(config_path)?;
     let mut buf = String::new();
     config_file.read_to_string(&mut buf)?;
     let config = toml::from_str(&buf)?;
@@ -60,7 +87,7 @@ fn read_config() -> Result<Config, io::Error> {
 }
 
 fn get_token(frontend: String) -> Result<Token, io::Error> {
-    let token_file_path = Path::new(TOKEN_FILE);
+    let token_file_path = Path::new("tokenfile");
     if token_file_path.exists() {
         let mut token_file = File::open(token_file_path)?;
         let mut buf = String::new();
