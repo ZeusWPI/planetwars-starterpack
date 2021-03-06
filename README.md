@@ -2,7 +2,17 @@
 
 The entrypoint to create your own bot for our AI planetwars game.
 
-## Quick setup
+## Prebuilt client
+A prebuilt binary for linux is available on the github releases page for this repository.
+If this doesn't work for you, follow the instructions below to build it yourself.
+
+To start the client, run
+```bash
+./planetwars-client run config.toml
+```
+an example `config.toml` file can be found in this repository.
+
+## Building the client
 
 Get immediatly started with just a few steps.
 
@@ -11,41 +21,41 @@ Get immediatly started with just a few steps.
 - curl
 - git
 - gcc (or any other C compiler of your choice)
+- rust
 
 ### Installing rust
 
-```
+If you don't have rust installed already, run this command to install it:
+```bash
 curl --proto '=https' --tlmsv1.2 -sSf https://sh.rustup.rs | sh
 ```
-It asks for what version to install. The default is fine, so just press enter.
+It should ask what version to install. The default is fine, so just press enter.
 
-Activate rust in your current shell
+Now, activate rust in your current shell:
 
-```
+```bash
 source $HOME/.cargo/env
 ```
 
-### Running the client
-
-First, check out this repository
-```
-git clone https://github.com/ZeusWPI/planetwars-starterpack.git
-```
+### Building the client
 
 Next, build the client
 
-```
+```bash
 cd planetwars-starterpack/client
 cargo build
 ```
 
 Now you can run 
-```
+```bash
 cargo run client ../config.toml`
 ```
 
-This will start the client using the configuration file we provided in this repository.
-Feel free to have a look at what's inside!
+(sidenote: for the prebuilt client we used the `run` subcommand, but here we use the `client` subcommand.
+These are aliasses, the author got upset typing `cargo run run` in their terminal.)
+
+## Joining a lobby
+Using the method of your chosing described above, you should now have your client running.
 
 You should see some output stating a bot token was generated for you. We will use this
 token in the next step to identify your user.
@@ -53,7 +63,6 @@ You probably want to add this token to your configuration file to make it perman
 as per the instructions in your terminal. If you don't do this, a new token will
 be generated the next time you run the client, so you'll have to authenticate again.
 
-### Joining a lobby
 If you already have a lobby URL you wish to join, simply navigate there. If not,
 you can create a new lobby at [games.zeus.gent](https://games.zeus.gent). 
 
@@ -84,6 +93,10 @@ You can edit the `config.toml` file to set the command that will be used to star
 
 Be aware that it is possible that your bot will be running multiple times simultaneously,
 keep this in mind when e.g. logging output to a file.
+
+You can find a good overview of the game rules on the [old PlanetWars website](https://planetwars.zeus.gent/info/).
+
+Good luck and have fun!
 
 ## FAQ
 
