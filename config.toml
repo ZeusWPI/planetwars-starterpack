@@ -1,3 +1,6 @@
+# the server your bot should connect to
 server = "ws://games.zeus.gent:8080"
+# URL for the lobby server
 frontend = "https://games.zeus.gent"
+# The command to use to start your bot
 bot_argv = ["python3", "simple.py"]
