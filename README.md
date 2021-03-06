@@ -2,19 +2,26 @@
 
 The entrypoint to create your own bot for our AI planetwars game.
 
-## Prebuilt client
-A prebuilt binary for linux is available on the github releases page for this repository.
-If this doesn't work for you, follow the instructions below to build it yourself.
+Get immediatly started with just a few steps.
 
-To start the client, run
+
+## Prebuilt client (easiest)
+
+A prebuilt binary for linux is available on the github releases page for this repository.
+If this doesn't work for you, follow the instructions in [Building the client](#building-the-client) below to build it yourself.
+
+You will need to download 3 files which are all provided in the repository
+1) [the binary](https://github.com/ZeusWPI/planetwars-starterpack/releases/download/v0.1-alpha/planetwars-client)
+2) [the example config](https://raw.githubusercontent.com/ZeusWPI/planetwars-starterpack/main/config.toml)
+3) [the example bot](https://raw.githubusercontent.com/ZeusWPI/planetwars-starterpack/main/simple.py)
+
+Put all these files in the same folder and start the client:
 ```bash
 ./planetwars-client run config.toml
 ```
-an example `config.toml` file can be found in this repository.
+Now continue to [Joining a lobby](#joining-a-lobby) to play your first game.
 
 ## Building the client
-
-Get immediatly started with just a few steps.
 
 ### Required tools
 
