@@ -55,7 +55,7 @@ cargo build
 
 Now you can run 
 ```bash
-cargo run client ../config.toml`
+cargo run client ../config.toml
 ```
 
 (sidenote: for the prebuilt client we used the `run` subcommand, but here we use the `client` subcommand.
