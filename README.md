@@ -34,7 +34,7 @@ Now continue to [Joining a lobby](#joining-a-lobby) to play your first game.
 
 If you don't have rust installed already, run this command to install it:
 ```bash
-curl --proto '=https' --tlmsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 It should ask what version to install. The default is fine, so just press enter.
 
